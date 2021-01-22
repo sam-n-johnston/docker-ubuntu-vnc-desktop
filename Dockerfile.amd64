@@ -123,6 +123,8 @@ RUN apt update \
 RUN apt update \
     && apt install -y ros-noetic-desktop-full
 
+# RUN apt-get install libeigen3-dev
+
 RUN useradd -ms /bin/bash sam
 
 USER sam
@@ -135,7 +137,10 @@ RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
     && /bin/bash -c "source ~/.bashrc"
 
 RUN mkdir -p ~/catkin_ws/src \
-    && cd ~/catkin_ws/ 
+    # && cd ~/catkin_ws/src \
+    # && git clone https://github.com/leggedrobotics/xpp.git \
+    && cd ~/catkin_ws 
+
 # && /bin/bash -c "catkin_make"
 
 ################################################################################
