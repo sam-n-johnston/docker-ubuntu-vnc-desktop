@@ -131,14 +131,14 @@ USER sam
 WORKDIR /home/sam
 
 ENV HOME=/home/sam \
-    SHELL=/bin/bash
+    SHELL=/bin/bash \
+    DISPLAY=:1.0 \
+    TURTLEBOT3_MODEL=burger
 
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
     && /bin/bash -c "source ~/.bashrc"
 
 RUN mkdir -p ~/catkin_ws/src \
-    # && cd ~/catkin_ws/src \
-    # && git clone https://github.com/leggedrobotics/xpp.git \
     && cd ~/catkin_ws 
 
 # && /bin/bash -c "catkin_make"
