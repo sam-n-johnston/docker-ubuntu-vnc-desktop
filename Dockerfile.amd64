@@ -133,7 +133,8 @@ WORKDIR /home/sam
 ENV HOME=/home/sam \
     SHELL=/bin/bash \
     DISPLAY=:1.0 \
-    TURTLEBOT3_MODEL=burger
+    TURTLEBOT3_MODEL=burger \
+    GAZEBO_MODEL_PATH=/home/sam/catkin_ws/src/
 
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
     && /bin/bash -c "source ~/.bashrc"
