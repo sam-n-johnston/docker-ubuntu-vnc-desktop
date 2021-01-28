@@ -123,7 +123,8 @@ RUN apt update \
 RUN apt update \
     && apt install -y ros-noetic-desktop-full
 
-# RUN apt-get install libeigen3-dev
+RUN apt-get update \
+    && apt-get install -y ros-noetic-ros-control ros-noetic-ros-controllers
 
 RUN useradd -ms /bin/bash sam
 
