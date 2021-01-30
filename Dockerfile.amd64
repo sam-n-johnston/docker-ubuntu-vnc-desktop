@@ -124,7 +124,8 @@ RUN apt update \
     && apt install -y ros-noetic-desktop-full
 
 RUN apt-get update \
-    && apt-get install -y ros-noetic-ros-control ros-noetic-ros-controllers
+    && apt-get install -y ros-noetic-ros-control ros-noetic-ros-controllers \
+    && apt-get install -y libgazebo11-dev
 
 RUN useradd -ms /bin/bash sam
 
@@ -135,7 +136,8 @@ ENV HOME=/home/sam \
     SHELL=/bin/bash \
     DISPLAY=:1.0 \
     TURTLEBOT3_MODEL=burger \
-    GAZEBO_MODEL_PATH=/home/sam/catkin_ws/src/
+    GAZEBO_MODEL_PATH=/home/sam/catkin_ws/src/ \
+    GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:/home/sam/gazebo_plugins/gazebo_spring_plugin/build
 
 RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
     && /bin/bash -c "source ~/.bashrc"
