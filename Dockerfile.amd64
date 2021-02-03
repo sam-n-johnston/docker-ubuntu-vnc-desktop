@@ -127,6 +127,8 @@ RUN apt-get update \
     && apt-get install -y ros-noetic-ros-control ros-noetic-ros-controllers \
     && apt-get install -y libgazebo11-dev
 
+RUN apt install -y ros-noetic-plotjuggler-ros
+
 RUN useradd -ms /bin/bash sam
 
 USER sam
