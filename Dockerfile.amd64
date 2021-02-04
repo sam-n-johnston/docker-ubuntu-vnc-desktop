@@ -127,7 +127,16 @@ RUN apt-get update \
     && apt-get install -y ros-noetic-ros-control ros-noetic-ros-controllers \
     && apt-get install -y libgazebo11-dev
 
+RUN apt-get update \
+    && apt-get install -y python3-rosdep \
+    && rosdep init \
+    && rosdep update
+
+# RUN apt update && apt install -y snapd 
+# RUN snap install plotjuggler
+# RUN apt install -y ros-noetic-plotjuggler
 RUN apt install -y ros-noetic-plotjuggler-ros
+# RUN apt install -y ros-noetic-plotjuggler-msgs
 
 RUN useradd -ms /bin/bash sam
 
@@ -147,7 +156,17 @@ RUN echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc \
 RUN mkdir -p ~/catkin_ws/src \
     && cd ~/catkin_ws 
 
-# && /bin/bash -c "catkin_make"
+RUN cd ~/catkin_ws/src \
+    && git clone https://github.com/PlotJuggler/plotjuggler_msgs.git \
+    && git clone https://github.com/facontidavide/PlotJuggler.git \
+    && git clone https://github.com/PlotJuggler/plotjuggler-ros-plugins.git
+
+# RUN cd ~/catkin_ws \
+#     && /bin/bash -c "source ~/.bashrc" \
+#     && rosdep update \
+#     && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
+
+# RUN cd ~/catkin_ws/src && catkin build
 
 ################################################################################
 # merge
